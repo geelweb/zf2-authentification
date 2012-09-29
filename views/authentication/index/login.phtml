@@ -1,0 +1,23 @@
+<?php
+
+$title = _('Authenticate on {site_name}');
+$this->headTitle($title);
+?>
+
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+
+<?php if ($this->error_message) :?>
+<div class="alert-error">
+    <?php echo $this->error_message; ?>
+</div>
+<?php endif; ?>
+
+<?php
+$form = $this->form;
+$form->prepare();
+
+echo $this->form()->openTag($form);
+echo $this->formRow($form->get('username'));
+echo $this->formRow($form->get('password'));
+echo $this->formSubmit($form->get('submit'));
+echo $this->form()->closeTag();

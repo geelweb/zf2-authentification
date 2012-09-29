@@ -1,0 +1,23 @@
+<?php
+
+$title = _('Delete user');
+$this->headTitle($title);
+?>
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+
+<p>Are you sure that you want to delete
+    "<?php echo $this->escapeHtml($user->username); ?> &lt;<?php echo $this->escapeHtml($user->email); ?>&gt; ?
+</p>
+<?php
+$url = $this->url('authentication_admin_user', array(
+    'action' => 'delete',
+    'id'     => $this->id,
+));
+?>
+<form action="<?php echo $url; ?>" method="post">
+<div>
+    <input type="hidden" name="id" value="<?php echo (int) $user->id; ?>" />
+    <input type="submit" name="del" value="Yes" />
+    <input type="submit" name="del" value="No" />
+</div>
+</form>

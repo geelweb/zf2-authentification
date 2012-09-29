@@ -1,0 +1,19 @@
+<?php
+
+$title = 'Add new user';
+$this->headTitle($title);
+?>
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+<?php
+$form = $this->form;
+$form->setAttribute('action', $this->url('authentication_admin_user', array('action' => 'add')));
+$form->prepare();
+
+echo $this->form()->openTag($form);
+echo $this->formHidden($form->get('id'));
+echo $this->formRow($form->get('username'));
+echo $this->formRow($form->get('password'));
+echo $this->formRow($form->get('email'));
+echo $this->formRow($form->get('is_super_user'));
+echo $this->formSubmit($form->get('submit'));
+echo $this->form()->closeTag();
