@@ -15,21 +15,21 @@ class LoginForm extends Form
             'name' => 'username',
             'type' => 'Zend\Form\Element\Text',
             'options' => array(
-                'label' => _('Username'),
+                'label' => 'Username',
             ),
         ));
         $this->add(array(
             'name' => 'password',
             'type' => 'Zend\Form\Element\Password',
             'options' => array(
-                'label' => _('Password'),
+                'label' => 'Password',
             ),
         ));
         $this->add(array(
             'name' => 'submit',
             'attributes' => array(
                 'type'  => 'submit',
-                'value' => _('Sign-in'),
+                'value' => 'Sign-in',
                 'id' => 'submitbutton',
             ),
         ));

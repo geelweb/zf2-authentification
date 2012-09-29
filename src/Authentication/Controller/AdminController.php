@@ -22,7 +22,7 @@ class AdminController extends AbstractActionController
     public function addAction()
     {
         $form = new UserForm();
-        $form->get('submit')->setValue(_('Add'));
+        $form->get('submit')->setValue('Add');
 
         $request = $this->getRequest();
         if ($request->isPost()) {
@@ -53,7 +53,7 @@ class AdminController extends AbstractActionController
 
         $form  = new UserForm();
         $form->bind($user);
-        $form->get('submit')->setAttribute('value', _('Edit'));
+        $form->get('submit')->setAttribute('value', 'Edit');
 
         $request = $this->getRequest();
         if ($request->isPost()) {

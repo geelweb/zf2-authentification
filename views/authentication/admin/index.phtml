@@ -1,36 +1,36 @@
 <?php
 
-$title = _('Users list');
+$title = $this->translate('Users list');
 $this->headTitle($title);
 
 ?>
 
 <h1><?php echo $this->escapeHtml($title); ?></h1>
 <p>
-    <a href="<?php echo $this->url('authentication_admin_user', array('action' => 'add')); ?>"><?php echo _('Add new user'); ?></a>
+    <a href="<?php echo $this->url('authentication_admin_user', array('action' => 'add')); ?>"><?php echo $this->translate('Add new user'); ?></a>
 </p>
 
 <table class="table">
 <tr>
-    <th><?php echo _('Username'); ?></th>
-    <th><?php echo _('Email'); ?></th>
-    <th><?php echo _('Is super user'); ?></th>
+    <th><?php echo $this->translate('Username'); ?></th>
+    <th><?php echo $this->translate('Email'); ?></th>
+    <th><?php echo $this->translate('Is super user'); ?></th>
     <th>&nbsp;</th>
 </tr>
 
 
 <?php if (!count($users)) : ?>
-<tr><td colspan="4"><?php echo _('No users found'); ?></td></tr>
+<tr><td colspan="4"><?php echo $this->translate('No users found'); ?></td></tr>
 <?php endif; ?>
 
 <?php foreach ($users as $user) : ?>
 <tr>
     <td><?php echo $this->escapeHtml($user->username); ?></td>
     <td><?php echo $this->escapeHtml($user->email); ?></td>
-    <td><?php echo $user->is_super_user ? _('Yes') : _('No'); ?></td>
+    <td><?php echo $user->is_super_user ? $this->translate('Yes') : $this->translate('No'); ?></td>
     <td>
-        <a href="<?php echo $this->url('authentication_admin_user', array('action' => 'edit', 'id' => $user->id)); ?>"><?php echo _('Edit'); ?></a>
-        <a href="<?php echo $this->url('authentication_admin_user', array('action' => 'delete', 'id' => $user->id)); ?>"><?php echo _('Delete'); ?></a>
+        <a href="<?php echo $this->url('authentication_admin_user', array('action' => 'edit', 'id' => $user->id)); ?>"><?php echo $this->translate('Edit'); ?></a>
+        <a href="<?php echo $this->url('authentication_admin_user', array('action' => 'delete', 'id' => $user->id)); ?>"><?php echo $this->translate('Delete'); ?></a>
     </td>
 </tr>
 <?php endforeach; ?>

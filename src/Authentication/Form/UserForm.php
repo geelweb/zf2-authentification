@@ -22,28 +22,28 @@ class UserForm extends Form
             'name' => 'username',
             'type' => 'Zend\Form\Element\Text',
             'options' => array(
-                'label' => _('Username'),
+                'label' => 'Username',
             ),
         ));
         $this->add(array(
             'name' => 'password',
             'type' => 'Zend\Form\Element\Password',
             'options' => array(
-                'label' => _('Password'),
+                'label' => 'Password',
             ),
         ));
         $this->add(array(
             'name' => 'email',
             'type' => 'Zend\Form\Element\Email',
             'options' => array(
-                'label' => _('Email'),
+                'label' => 'Email',
             ),
         ));
         $this->add(array(
             'name' => 'is_super_user',
             'type' => 'Zend\Form\Element\Checkbox',
             'options' => array(
-                'label' => _('Is super user'),
+                'label' => 'Is super user',
             ),
         ));
 
@@ -51,7 +51,7 @@ class UserForm extends Form
             'name' => 'submit',
             'attributes' => array(
                 'type'  => 'submit',
-                'value' => _('Save'),
+                'value' => 'Save',
                 'id' => 'submitbutton',
             ),
         ));
