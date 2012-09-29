@@ -36,10 +36,6 @@ class IndexController extends AbstractActionController
                     'form' => $form,
                     'error_message' => array_pop($result->getMessages()),
                 );
-                echo '<hr/><pre>';
-                print_r($result);
-                echo '</pre><hr/>';
-                die('ok');
             }
         }
 
