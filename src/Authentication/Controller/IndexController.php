@@ -28,6 +28,11 @@ class IndexController extends AbstractActionController
                 $service = $sm->get('AuthService');
                 $result = $service->authenticate($adapter);
                 if ($result->isValid()) {
+                    $storage = $service->getStorage();
+                    $storage->write($adapter->getResultRowObject(
+                        null,
+                        'password'));
+
                     // TODO make this route customizable
                     return $this->redirect()->toRoute('home');
                 }

@@ -49,5 +49,15 @@ class AuthenticationPlugin extends AbstractPlugin
             $response->sendHeaders();
             exit;
         }
+
+        $identity = $service->getIdentity();
+        $require_super_user = $routeMatch->getParam('require_super_user', false);
+        if ($require_super_user && !$identity->is_super_user) {
+            $response = $event->getResponse();
+            $response->setStatusCode(403);
+            $response->sendHeaders();
+            echo $response->getReasonPhrase();
+            exit;
+        }
     }
 }

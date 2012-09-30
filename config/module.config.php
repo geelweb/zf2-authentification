@@ -47,6 +47,7 @@ return array(
                     'defaults' => array(
                         'controller' => 'Authentication\Controller\Admin',
                         'action' => 'index',
+                        'require_super_user' => true,
                     ),
                 ),
             ),
