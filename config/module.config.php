@@ -59,4 +59,9 @@ return array(
             'authentication' => __DIR__ . '/../views',
         ),
     ),
+    'view_helpers' => array(
+        'invokables' => array(
+            'identitty' => 'Authentication\View\Helper\Identity',
+        )
+    )
 );
