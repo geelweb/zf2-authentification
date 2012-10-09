@@ -4,7 +4,8 @@ namespace Authentication\Model;
 
 use Zend\Db\Adapter\Adapter,
     Zend\Db\ResultSet\ResultSet,
-    Zend\Db\TableGateway\AbstractTableGateway;
+    Zend\Db\TableGateway\AbstractTableGateway,
+    Zend\Db\Sql\Expression;
 
 class UserTable extends AbstractTableGateway
 {
@@ -20,9 +21,16 @@ class UserTable extends AbstractTableGateway
         $this->initialize();
     }
 
-    public function fetchAll()
+    public function fetchAll($options=array())
     {
         $resultSet = $this->select();
+        if (isset($options['mode_select']) && $options['mode_select']) {
+            $return = array();
+            foreach ($resultSet as $record) {
+                $return[$record->id] = sprintf('%s <%s>', $record->username, $record->email);
+            }
+            return $return;
+        }
         return $resultSet;
     }
 
@@ -46,7 +54,7 @@ class UserTable extends AbstractTableGateway
     {
         $data = array(
             'username' => $user->username,
-            'password' => $user->password,
+            'password' => new Expression("crypt(?, gen_salt('md5'))", $user->password),
             'email' => $user->email,
             'is_super_user' => $user->is_super_user,
         );
