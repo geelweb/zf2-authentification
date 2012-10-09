@@ -63,7 +63,6 @@ class AdminController extends AbstractActionController
             if ($form->isValid()) {
                 $this->getUserTable()->saveUser($form->getData());
 
-                // Redirect to list of albums
                 return $this->redirect()->toRoute('authentication_admin_user');
             }
         }
@@ -90,7 +89,6 @@ class AdminController extends AbstractActionController
                 $this->getUserTable()->deleteuser($id);
             }
 
-            // Redirect to list of albums
             return $this->redirect()->toRoute('authentication_admin_user');
         }
 
