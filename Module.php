@@ -55,7 +55,8 @@ class Module
                     $authAdapter = new AuthAdapterDbTable($dbAdapter,
                                                           'auth_user',
                                                           'username',
-                                                          'password');
+                                                          'password',
+                                                          'crypt(?, password)');
                     return $authAdapter;
                 },
             ),
@@ -70,6 +71,7 @@ class Module
         $eventManager = $e->getApplication()
                           ->getEventManager()
                           ->attach('dispatch', array($this, 'loadConfiguration'), 2);
+
     }
 
     public function loadConfiguration(MvcEvent $e)
@@ -85,8 +87,13 @@ class Module
                 $sm->get('ControllerPluginManager')
                     ->get('AuthenticationPlugin')
                     ->doAuthorization($e);
+
+                $sm->get('viewhelpermanager')
+                    ->get('identity')
+                    ->setAuthenticationService($sm->get('AuthService'));
             }
         );
+
     }
 
 }
