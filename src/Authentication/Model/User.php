@@ -80,7 +80,7 @@ class User implements InputFilterAwareInterface
                         'name' => 'StringLength',
                         'options' => array(
                             'encoding' => 'UTF-8',
-                            'min' => 8,
+                            'min' => 6,
                             'max' => 40,
                         ),
                     ),
