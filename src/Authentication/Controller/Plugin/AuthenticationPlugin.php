@@ -2,11 +2,11 @@
 
 namespace Authentication\Controller\Plugin;
 
-use Zend\Mvc\Controller\Plugin\AbstractPlugin;
+use Zend\Mvc\Controller\Plugin\AbstractPlugin,
+    Zend\Authentication\AuthenticationService;
 
 class AuthenticationPlugin extends AbstractPlugin
 {
-    protected $event;
     protected $authenticationService;
 
     public function setAuthenticationService($service)
@@ -17,9 +17,7 @@ class AuthenticationPlugin extends AbstractPlugin
     public function getAuthenticationService()
     {
         if (!$this->authenticationService) {
-            $application = $this->event->getApplication();
-            $sm = $application->getServiceManager();
-            $this->authenticationService = $sm->get('AuthService');
+            $this->authenticationService = new AuthenticationService();
         }
 
         return $this->authenticationService;
@@ -27,8 +25,6 @@ class AuthenticationPlugin extends AbstractPlugin
 
     public function doAuthorization($event)
     {
-        $this->event = $event;
-
         $routeMatch = $event->getRouteMatch();
         $controller = $routeMatch->getParam('controller');
         $action     = $routeMatch->getParam('action');
@@ -59,5 +55,15 @@ class AuthenticationPlugin extends AbstractPlugin
             echo $response->getReasonPhrase();
             exit;
         }
+    }
+
+    public function hasIdentity()
+    {
+        return $this->getAuthenticationService()->hasIdentity();
+    }
+
+    public function getIdentity()
+    {
+        return $this->getAuthenticationService()->getIdentity();
     }
 }
