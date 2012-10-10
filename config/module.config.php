@@ -63,5 +63,14 @@ return array(
         'invokables' => array(
             'identitty' => 'Authentication\View\Helper\Identity',
         )
-    )
+    ),
+//    'di' => array(
+//        'instance' => array(
+//            'Authentication\Controller\Plugin\Identity' => array(
+//                'parameters' => array(
+//                    'AuthenticationService' => 'AuthService',
+//                ),
+//            )
+//        )
+//    ),
 );
