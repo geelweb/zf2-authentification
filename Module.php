@@ -87,10 +87,6 @@ class Module
                 $sm->get('ControllerPluginManager')
                     ->get('AuthenticationPlugin')
                     ->doAuthorization($e);
-
-                $sm->get('viewhelpermanager')
-                    ->get('identity')
-                    ->setAuthenticationService($sm->get('AuthService'));
             }
         );
 
